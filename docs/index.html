@@ -1,0 +1,1232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f5f2">
+    <meta name="description" content="Beverley Da Costa is a robotics engineer focused on perception, autonomous navigation, and reliable robotic systems.">
+    <meta property="og:title" content="Beverley Da Costa — Robotics Engineer">
+    <meta property="og:description" content="Building thoughtful robotic systems, from perception to motion.">
+    <title>Beverley Da Costa — Robotics Engineer</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f5f5f2;
+        --ink: #171815;
+        --muted: #73756f;
+        --line: #d9dad4;
+        --lime: #d7f36a;
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-family: var(--sans);
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 5px;
+      }
+
+      .shell {
+        width: min(100% - 64px, 1360px);
+        margin-inline: auto;
+      }
+
+      .site-header {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 92px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .wordmark {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 19px;
+        font-weight: 650;
+        letter-spacing: -0.06em;
+        text-decoration: none;
+      }
+
+      .mark {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: -0.1em;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 3.2vw, 48px);
+        font-size: 13px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+      }
+
+      .nav-links a:hover,
+      .text-link:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      .nav-contact {
+        padding: 12px 16px;
+        border: 1px solid var(--ink);
+        border-radius: 2px;
+      }
+
+      .menu-toggle {
+        display: none;
+        border: 0;
+        background: none;
+        color: var(--ink);
+        font: inherit;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 820px;
+        padding-top: clamp(76px, 11vw, 154px);
+        overflow: hidden;
+      }
+
+      .eyebrow,
+      .section-kicker,
+      .project-index,
+      .meta-label {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.045em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        color: var(--muted);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #779a36;
+        box-shadow: 0 0 0 4px #779a3620;
+      }
+
+      h1 {
+        position: relative;
+        z-index: 1;
+        max-width: 1280px;
+        margin: 30px 0 22px;
+        font-size: clamp(54px, 7vw, 104px);
+        font-weight: 520;
+        letter-spacing: -0.09em;
+        line-height: 0.94;
+      }
+
+      .pixel-word {
+        display: inline-block;
+        padding: 0.01em 0.12em 0.08em;
+        border: 1px solid #b9bab3;
+        font-family: var(--mono);
+        font-size: 0.78em;
+        font-weight: 400;
+        letter-spacing: -0.11em;
+        line-height: 1;
+        vertical-align: 0.04em;
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 740px;
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(18px, 2.2vw, 26px);
+        letter-spacing: -0.035em;
+        line-height: 1.55;
+      }
+
+      .hero-actions {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 26px;
+        margin-top: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 54px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 22px;
+        background: var(--ink);
+        color: #fff;
+        font-size: 14px;
+        text-decoration: none;
+        transition: transform 180ms ease, background 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        background: #34372d;
+      }
+
+      .text-link {
+        font-size: 14px;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 4px;
+      }
+
+      .orbital-field {
+        position: absolute;
+        right: -9%;
+        bottom: -270px;
+        width: min(78vw, 960px);
+        height: min(54vw, 590px);
+        min-height: 340px;
+        border-radius: 50%;
+        background-image: radial-gradient(circle, #161713 1.25px, transparent 1.55px);
+        background-position: center;
+        background-size: 15px 15px;
+        mask-image: radial-gradient(ellipse at 50% 44%, #000 0 43%, transparent 72%);
+        -webkit-mask-image: radial-gradient(ellipse at 50% 44%, #000 0 43%, transparent 72%);
+        opacity: 0.62;
+        pointer-events: none;
+      }
+
+      .orbital-field::before,
+      .orbital-field::after {
+        position: absolute;
+        content: "";
+        border: 1px solid #17181522;
+        border-radius: 50%;
+        inset: 12% 9%;
+        transform: rotate(-17deg);
+      }
+
+      .orbital-field::after {
+        inset: 20% 1%;
+        transform: rotate(12deg);
+      }
+
+      .hero-caption {
+        position: absolute;
+        right: 0;
+        bottom: 28px;
+        z-index: 1;
+        color: var(--muted);
+      }
+
+      .section {
+        padding-block: clamp(84px, 11vw, 150px);
+        border-top: 1px solid var(--line);
+      }
+
+      .section-heading {
+        display: grid;
+        grid-template-columns: minmax(150px, 0.72fr) 2fr;
+        gap: 30px;
+        margin-bottom: 64px;
+      }
+
+      .section-kicker {
+        padding-top: 11px;
+        color: var(--muted);
+      }
+
+      .section-title {
+        max-width: 780px;
+        margin: 0;
+        font-size: clamp(38px, 5.2vw, 68px);
+        font-weight: 500;
+        letter-spacing: -0.075em;
+        line-height: 1.02;
+      }
+
+      .section-intro {
+        max-width: 580px;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .project-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .project-card {
+        display: flex;
+        min-height: 490px;
+        flex-direction: column;
+        padding: 24px;
+        border: 1px solid var(--line);
+        background: #eeefea;
+      }
+
+      .project-visual {
+        position: relative;
+        display: grid;
+        min-height: 250px;
+        flex: 1;
+        place-items: center;
+        overflow: hidden;
+        background: #e4e5df;
+      }
+
+      .project-visual.dark {
+        background: #20211d;
+        color: #f5f5f2;
+      }
+
+      .project-visual.lime {
+        background: var(--lime);
+      }
+
+      .project-visual svg {
+        width: min(76%, 310px);
+        height: auto;
+      }
+
+      .project-visual.project-video {
+        display: block;
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+        flex: 0 0 auto;
+        background: #171815;
+      }
+
+      .project-video iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .visual-tag {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .project-info {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 18px;
+        padding-top: 23px;
+      }
+
+      .project-title {
+        margin: 0;
+        font-size: clamp(20px, 2.2vw, 27px);
+        font-weight: 500;
+        letter-spacing: -0.055em;
+      }
+
+      .project-description {
+        max-width: 480px;
+        margin: 9px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .project-index {
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 17px;
+      }
+
+      .tag {
+        padding: 6px 9px;
+        border: 1px solid var(--line);
+        border-radius: 99px;
+        font-family: var(--mono);
+        font-size: 10px;
+      }
+
+      .project-link {
+        display: inline-block;
+        margin-top: 16px;
+        font-size: 12px;
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .photo-card {
+        min-width: 0;
+        margin: 0;
+      }
+
+      .photo-frame {
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        background: #e4e5df;
+      }
+
+      .photo-frame img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 300ms ease;
+      }
+
+      .photo-card:hover .photo-frame img {
+        transform: scale(1.025);
+      }
+
+      .photo-frame .portrait-photo {
+        object-position: center 26%;
+      }
+
+      .photo-caption {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        padding-top: 14px;
+      }
+
+      .photo-title {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: -0.035em;
+      }
+
+      .photo-credit {
+        margin: 5px 0 0;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      .photo-index {
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 10px;
+      }
+
+      .experience-list {
+        border-top: 1px solid var(--line);
+      }
+
+      .experience-row {
+        display: grid;
+        grid-template-columns: 0.8fr 1.35fr 2fr;
+        gap: 28px;
+        padding: 29px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .experience-date {
+        padding-top: 5px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 11px;
+        line-height: 1.6;
+      }
+
+      .experience-role {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: -0.04em;
+      }
+
+      .experience-org {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .experience-details {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .experience-details ul {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .spotlight {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-top: 40px;
+      }
+
+      .spotlight-card {
+        min-height: 260px;
+        padding: clamp(24px, 4vw, 42px);
+        border: 1px solid var(--line);
+      }
+
+      .spotlight-card.dark {
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .spotlight-card.accent {
+        background: var(--lime);
+        border-color: var(--lime);
+      }
+
+      .spotlight-label {
+        margin: 0;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.045em;
+        line-height: 1.6;
+        text-transform: uppercase;
+      }
+
+      .spotlight-title {
+        margin: 32px 0 0;
+        font-size: clamp(28px, 3.3vw, 42px);
+        font-weight: 500;
+        letter-spacing: -0.07em;
+        line-height: 1.05;
+      }
+
+      .spotlight-copy {
+        max-width: 470px;
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .dark .spotlight-copy {
+        color: #b6b7b0;
+      }
+
+      .spotlight-card .text-link {
+        display: inline-block;
+        margin-top: 23px;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(30px, 8vw, 110px);
+      }
+
+      .education-list {
+        display: grid;
+        gap: 27px;
+      }
+
+      .education-item {
+        padding-top: 19px;
+        border-top: 1px solid var(--line);
+      }
+
+      .education-topline {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 11px;
+      }
+
+      .education-school {
+        margin: 15px 0 5px;
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: -0.05em;
+      }
+
+      .education-degree,
+      .education-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .education-note {
+        margin-top: 9px;
+        font-size: 12px;
+      }
+
+      .skills-list {
+        display: grid;
+      }
+
+      .skill-row {
+        display: grid;
+        grid-template-columns: minmax(120px, 0.75fr) 1.25fr;
+        gap: 20px;
+        padding: 18px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .skill-label {
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 11px;
+        line-height: 1.6;
+      }
+
+      .skill-items {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .contact {
+        position: relative;
+        overflow: hidden;
+        padding-block: clamp(74px, 10vw, 130px);
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .contact-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 40px;
+      }
+
+      .contact .section-kicker {
+        color: #afb0a8;
+      }
+
+      .contact-title {
+        max-width: 760px;
+        margin: 20px 0 0;
+        font-size: clamp(48px, 8vw, 100px);
+        font-weight: 500;
+        letter-spacing: -0.09em;
+        line-height: 0.95;
+      }
+
+      .contact .button {
+        flex-shrink: 0;
+        background: var(--lime);
+        color: var(--ink);
+      }
+
+      .contact-orbit {
+        position: absolute;
+        right: -90px;
+        bottom: -280px;
+        width: 440px;
+        height: 440px;
+        border: 1px solid #ffffff20;
+        border-radius: 50%;
+      }
+
+      .contact-orbit::before,
+      .contact-orbit::after {
+        position: absolute;
+        border: 1px solid #ffffff20;
+        border-radius: 50%;
+        content: "";
+        inset: 30px;
+      }
+
+      .contact-orbit::after {
+        inset: 70px;
+      }
+
+      .site-footer {
+        display: flex;
+        min-height: 86px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 10px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .footer-links a {
+        text-decoration: none;
+      }
+
+      @media (max-width: 760px) {
+        .shell {
+          width: min(100% - 40px, 600px);
+        }
+
+        .site-header {
+          min-height: 76px;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+          min-height: 42px;
+          align-items: center;
+          padding: 0 3px;
+          cursor: pointer;
+          font-size: 13px;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: calc(100% - 1px);
+          right: 0;
+          left: 0;
+          display: none;
+          align-items: stretch;
+          gap: 0;
+          padding: 8px 20px 18px;
+          border: 1px solid var(--line);
+          background: var(--paper);
+        }
+
+        .nav-links.is-open {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .nav-links a {
+          padding: 13px 0;
+        }
+
+        .nav-contact {
+          align-self: flex-start;
+          margin-top: 8px;
+          padding: 10px 14px !important;
+        }
+
+        .hero {
+          min-height: 660px;
+          padding-top: 92px;
+        }
+
+        h1 {
+          margin-top: 26px;
+          font-size: clamp(50px, 12vw, 78px);
+        }
+
+        .orbital-field {
+          right: -35%;
+          bottom: -145px;
+          width: 115vw;
+          height: 350px;
+          background-size: 13px 13px;
+        }
+
+        .hero-caption {
+          bottom: 18px;
+        }
+
+        .section-heading {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          margin-bottom: 38px;
+        }
+
+        .section-kicker {
+          padding-top: 0;
+        }
+
+        .project-list,
+        .about-grid,
+        .spotlight,
+        .photo-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .project-card {
+          min-height: 420px;
+          padding: 16px;
+        }
+
+        .project-visual {
+          min-height: 225px;
+        }
+
+        .experience-row {
+          grid-template-columns: 1fr 1.4fr;
+          gap: 12px 22px;
+        }
+
+        .experience-details {
+          grid-column: 2;
+        }
+
+        .contact-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .site-footer {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding-block: 22px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .shell {
+          width: min(100% - 32px, 600px);
+        }
+
+        .hero {
+          min-height: 630px;
+        }
+
+        .hero-actions {
+          gap: 18px;
+        }
+
+        .experience-row {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .experience-details {
+          grid-column: auto;
+          padding-top: 5px;
+        }
+
+        .skill-row {
+          grid-template-columns: 1fr;
+          gap: 7px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header shell">
+      <a class="wordmark" href="#top" aria-label="Beverley Da Costa, home">
+        <span class="mark" aria-hidden="true">BD</span>
+        <span>Beverley Da Costa</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav class="nav-links" id="primary-nav" aria-label="Main navigation">
+        <a href="#work">Selected work</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a class="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Robotics engineer · Tempe, Arizona</div>
+        <h1 id="hero-title">I build robots that<br>understand the world<br>and move through it<span class="pixel-word">.</span></h1>
+        <p class="hero-copy">From perception to motion, I bring hardware and software together to make autonomous systems more capable, reliable, and human-aware.</p>
+        <div class="hero-actions">
+          <a class="button" href="#work">Explore selected work <span aria-hidden="true">&nbsp;↘</span></a>
+          <a class="text-link" href="mailto:beverley.c.m.dacosta@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="orbital-field" aria-hidden="true"></div>
+        <div class="hero-caption meta-label">Perception / autonomy / systems</div>
+      </section>
+
+      <section class="section shell" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <div class="section-kicker">01 — Selected work</div>
+          <div>
+            <h2 class="section-title" id="work-title">Robotics is a team sport between hardware and software.</h2>
+            <p class="section-intro">A few projects where perception, control, and careful integration meet in the physical world.</p>
+          </div>
+        </div>
+
+        <div class="project-list">
+          <article class="project-card">
+            <div class="project-visual project-video">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/KKXYvcwP52c"
+                title="Give Me a Hand: teleoperated robot arm and haptic glove capstone demo"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="project-info">
+              <div>
+                <h3 class="project-title">Teleoperated robot arm + haptic feedback</h3>
+                <p class="project-description">Built to let a human guide a robot into environments too dangerous to enter, this capstone pairs a 4-DOF arm with a wearable haptic glove. Integrated MediaPipe hand tracking, ROS 2 control, and Moteus CAN motor commands on a Jetson Orin Nano, with BLE carrying tactile feedback back to the operator.</p>
+                <div class="project-tags"><span class="tag">ROS 2</span><span class="tag">MediaPipe</span><span class="tag">NVIDIA Jetson</span><span class="tag">Moteus / CAN</span></div>
+                <a class="text-link project-link" href="https://sites.google.com/view/givemeahand/home" target="_blank" rel="noopener noreferrer">Explore the capstone project <span aria-hidden="true">↗</span></a>
+              </div>
+              <span class="project-index">01</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual">
+              <span class="visual-tag">Autonomy · 2025</span>
+              <svg viewBox="0 0 360 230" role="img" aria-label="Illustration of a mapped route and autonomous mobile robot">
+                <g fill="none" stroke="#23251f" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M28 34h304v162H28z" stroke-width="1" opacity=".18"/>
+                  <path d="M45 67h91v38H45zm177 87h91v25h-91zM197 42h59v35h-59zM77 151h49v29H77z" stroke-width="1.5" opacity=".55"/>
+                  <path d="M62 88h50m-27-13v25m151-41h31m-16-9v18m-86 99h37m-18-8v16" stroke-width="1" opacity=".3"/>
+                  <path d="M97 127c28-35 60-29 85-54s46-16 51 9-26 44-5 63 44 3 55-17" stroke="#789235" stroke-width="3" stroke-dasharray="2 8"/>
+                  <path d="m279 122 6 7 11-2" stroke="#789235" stroke-width="3"/>
+                  <g transform="translate(207 139)">
+                    <path d="M-21 7v-14l12-12h25L29-7V7z" fill="#d7f36a" stroke-width="2"/>
+                    <circle cx="-11" cy="9" r="5" fill="#23251f"/>
+                    <circle cx="18" cy="9" r="5" fill="#23251f"/>
+                    <path d="M2-18v-14m0 0-5 7m5-7 5 7" stroke-width="2"/>
+                  </g>
+                  <circle cx="97" cy="127" r="5" fill="#789235" stroke="none"/>
+                  <circle cx="285" cy="128" r="5" fill="#789235" stroke="none"/>
+                </g>
+              </svg>
+            </div>
+            <div class="project-info">
+              <div>
+                <h3 class="project-title">Autonomous robot navigation</h3>
+                <p class="project-description">Brought together mapping, localization, perception, and navigation to help a TurtleBot3 move autonomously through its environment.</p>
+                <div class="project-tags"><span class="tag">ROS 2</span><span class="tag">Nav2</span><span class="tag">SLAM</span><span class="tag">LiDAR · IMU</span></div>
+              </div>
+              <span class="project-index">02</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual lime">
+              <span class="visual-tag">Research · Kantor Lab</span>
+              <svg viewBox="0 0 360 230" role="img" aria-label="Illustration of stereo cameras and a reconstructed point cloud">
+                <g fill="none" stroke="#24261f" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M26 41h109v76H26zm190 0h109v76H216z" stroke-width="1.5"/>
+                  <circle cx="79" cy="79" r="20" stroke-width="3"/>
+                  <circle cx="269" cy="79" r="20" stroke-width="3"/>
+                  <circle cx="79" cy="79" r="7" fill="#24261f"/>
+                  <circle cx="269" cy="79" r="7" fill="#24261f"/>
+                  <path d="M135 78h81m-8-7 8 7-8 7" stroke-width="1.5"/>
+                  <path d="M75 132 173 190m196-58-98 58" stroke-width="1" stroke-dasharray="3 5"/>
+                  <path d="M181 131v69m-100-14h199" stroke-width="1" opacity=".45"/>
+                  <path d="m125 165 12-14 13 10 12-20 15 13 12-23 13 18 12-9 13 16 15-12 12 16m-77-27 4 22m-44 1 4 10m81-26 6 19" stroke-width="2"/>
+                  <g fill="#24261f" stroke="none">
+                    <circle cx="137" cy="151" r="2"/><circle cx="150" cy="161" r="2.5"/><circle cx="162" cy="141" r="2"/>
+                    <circle cx="177" cy="154" r="3"/><circle cx="189" cy="131" r="2.5"/><circle cx="203" cy="149" r="2"/>
+                    <circle cx="217" cy="140" r="2.5"/><circle cx="230" cy="156" r="2"/><circle cx="246" cy="144" r="2"/>
+                    <circle cx="168" cy="177" r="2"/><circle cx="197" cy="171" r="2.5"/><circle cx="222" cy="176" r="2"/>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <div class="project-info">
+              <div>
+                <h3 class="project-title">Stereo perception & 3D vision</h3>
+                <p class="project-description">Investigated segmentation, stereo depth, point-cloud generation, and TF2 transforms to diagnose perception and coordinate-frame issues on a ROS robot.</p>
+                <div class="project-tags"><span class="tag">YOLOv8</span><span class="tag">RAFT</span><span class="tag">Point clouds</span><span class="tag">ROS 1</span></div>
+              </div>
+              <span class="project-index">03</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual dark">
+              <span class="visual-tag">Research · SHRED Lab</span>
+              <svg viewBox="0 0 360 230" role="img" aria-label="Illustration of a wearable haptics prototype">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M124 45c-16 0-26 12-26 29v21l-14 15c-10 11-14 25-11 40l4 24c2 11 11 19 22 19h88c18 0 32-13 34-31l8-66c2-13-7-24-19-24-7 0-13 4-16 10l-7 15V70c0-12-9-21-20-21-7 0-12 3-16 9-4-7-11-12-20-12-4 0-8 1-12 3-4-3-9-4-15-4z" stroke-width="2"/>
+                  <path d="M102 95V70c0-13 8-21 19-21s19 8 19 21v34m0-14V66c0-13 8-21 19-21s19 8 19 21v43m0-27V70c0-12 8-20 19-20s19 8 19 20v56" stroke-width="2"/>
+                  <rect x="76" y="130" width="31" height="22" rx="4" fill="#d7f36a" stroke="none"/>
+                  <rect x="116" y="139" width="31" height="22" rx="4" fill="#d7f36a" stroke="none"/>
+                  <rect x="156" y="142" width="31" height="22" rx="4" fill="#d7f36a" stroke="none"/>
+                  <path d="M92 141h110m-71 7v17m-40-18v-20m80 21v-18" stroke="#d7f36a" stroke-width="1.5" stroke-dasharray="3 4"/>
+                  <path d="M252 79h42m-35-9 9 9-9 9m-7 60h34m-27-9 9 9-9 9" stroke-width="1.5" opacity=".55"/>
+                  <circle cx="272" cy="79" r="21" stroke-width="1.5" opacity=".55"/>
+                  <circle cx="272" cy="149" r="21" stroke-width="1.5" opacity=".55"/>
+                </g>
+              </svg>
+            </div>
+            <div class="project-info">
+              <div>
+                <h3 class="project-title">A wearable made to communicate through touch</h3>
+                <p class="project-description">Redesigned a haptic wearable through CAD, 3D printing, and laser-cut prototypes—iterating on the physical form through hands-on research and testing.</p>
+                <div class="project-tags"><span class="tag">Fusion 360</span><span class="tag">Prototyping</span><span class="tag">3D printing</span></div>
+              </div>
+              <span class="project-index">04</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section shell" id="moments" aria-labelledby="moments-title">
+        <div class="section-heading">
+          <div class="section-kicker">Behind the build</div>
+          <div>
+            <h2 class="section-title" id="moments-title">Robotics comes to life around the people who build it.</h2>
+            <p class="section-intro">A few moments from the lab, the capstone showcase, and a milestone at Carnegie Mellon.</p>
+          </div>
+        </div>
+        <div class="photo-grid">
+          <figure class="photo-card">
+            <div class="photo-frame">
+              <img src="images/beverley-in-robotics-lab.jpg" alt="Beverley standing in a robotics lab beside a large robotic arm" width="1152" height="768" loading="lazy">
+            </div>
+            <figcaption class="photo-caption">
+              <div>
+                <h3 class="photo-title">In the robotics lab</h3>
+                <p class="photo-credit">Where systems meet the real world.</p>
+              </div>
+              <span class="photo-index">01</span>
+            </figcaption>
+          </figure>
+          <figure class="photo-card">
+            <div class="photo-frame">
+              <img src="images/capstone-showcase.jpg" alt="Beverley and fellow robotics students showing their robot at Carnegie Mellon" width="1152" height="768" loading="lazy">
+            </div>
+            <figcaption class="photo-caption">
+              <div>
+                <h3 class="photo-title">Sharing the capstone</h3>
+                <p class="photo-credit">A team-built robot, ready for a closer look.</p>
+              </div>
+              <span class="photo-index">02</span>
+            </figcaption>
+          </figure>
+          <figure class="photo-card">
+            <div class="photo-frame">
+              <img class="portrait-photo" src="images/commencement-portrait.jpeg" alt="Beverley smiling in her Carnegie Mellon graduation gown and mortarboard" width="1151" height="768" loading="lazy">
+            </div>
+            <figcaption class="photo-caption">
+              <div>
+                <h3 class="photo-title">B.S. Robotics commencement</h3>
+                <p class="photo-credit">Carnegie Mellon · May 2026 · Photo: Elan Mizrahi</p>
+              </div>
+              <span class="photo-index">03</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section shell" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading">
+          <div class="section-kicker">02 — Experience</div>
+          <div>
+            <h2 class="section-title" id="experience-title">Learning by building, testing, and asking better questions.</h2>
+          </div>
+        </div>
+        <div class="experience-list">
+          <article class="experience-row">
+            <div class="experience-date">May 2025 — Aug 2025</div>
+            <div>
+              <h3 class="experience-role">Research Assistant</h3>
+              <p class="experience-org">Kantor Lab · Carnegie Mellon University</p>
+            </div>
+            <div class="experience-details">
+              <ul>
+                <li>Investigated YOLOv8 segmentation, RAFT stereo depth, 3D point clouds, and TF2 transforms to diagnose perception issues.</li>
+                <li>Debugged a ROS 1 stereo-vision robot across Python, Docker, Arduino, Linux, and hardware interfaces.</li>
+                <li>Developed Python tests and troubleshooting workflows for Dynamixel, Phidget, and Arduino-connected components.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="experience-row">
+            <div class="experience-date">May 2024 — Aug 2024</div>
+            <div>
+              <h3 class="experience-role">Research Assistant</h3>
+              <p class="experience-org">SHRED Lab · Carnegie Mellon University</p>
+            </div>
+            <div class="experience-details">
+              <ul>
+                <li>Redesigned a haptic wearable using Fusion 360 and additive manufacturing.</li>
+                <li>Built and refined prototypes through 3D printing, laser cutting, fabrication, and testing.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="experience-row">
+            <div class="experience-date">Jan 2025 — Dec 2025</div>
+            <div>
+              <h3 class="experience-role">Robotics Student Ambassador</h3>
+              <p class="experience-org">Robotics Institute · Carnegie Mellon University</p>
+            </div>
+            <div class="experience-details">
+              <ul>
+                <li>Served as a liaison for 20 undergraduate Robotics students, sharing feedback and facilitating communication with faculty, staff, and administration.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div class="spotlight">
+          <article class="spotlight-card dark">
+            <p class="spotlight-label">Carnegie Mellon Robotics Institute · Student feature</p>
+            <h3 class="spotlight-title">The first graduate of CMU’s B.S. in Robotics.</h3>
+            <p class="spotlight-copy">Featured on the Robotics Institute’s story about helping shape a new robotics degree—from hands-on systems integration to the human questions behind the technology.</p>
+            <a class="text-link" href="https://www.ri.cmu.edu/work-hard-and-dream-harder/" target="_blank" rel="noopener noreferrer">Read “Work Hard and Dream Harder” <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="spotlight-card accent">
+            <p class="spotlight-label">A design principle I carry into robotics</p>
+            <h3 class="spotlight-title">Ask not only what a system can do, but who it serves.</h3>
+            <p class="spotlight-copy">I want to build with intention—considering the people a technology supports, and who might be left out, from the very beginning.</p>
+            <a class="text-link" href="https://www.ri.cmu.edu/work-hard-and-dream-harder/" target="_blank" rel="noopener noreferrer">More on my approach <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section shell" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <div class="section-kicker">03 — About & toolkit</div>
+          <div>
+            <h2 class="section-title" id="about-title">Curious about the whole system—not just one part.</h2>
+            <p class="section-intro">I’m pursuing a master’s in Robotics and Autonomous Systems, building on a foundation in Robotics from Carnegie Mellon. I’m especially interested in perception, safety, and validating the systems that make autonomy work.</p>
+          </div>
+        </div>
+        <div class="about-grid">
+          <div>
+            <div class="section-kicker">Education</div>
+            <div class="education-list" style="margin-top: 20px">
+              <article class="education-item">
+                <div class="education-topline"><span>Tempe, Arizona</span><span>Expected May 2028</span></div>
+                <h3 class="education-school">Arizona State University</h3>
+                <p class="education-degree">M.S. Robotics and Autonomous Systems (Systems Engineering)</p>
+                <p class="education-note">Coursework: AI Engineering Foundations, Robotics and Autonomous Systems I</p>
+              </article>
+              <article class="education-item">
+                <div class="education-topline"><span>Pittsburgh, Pennsylvania</span><span>May 2026</span></div>
+                <h3 class="education-school">Carnegie Mellon University</h3>
+                <p class="education-degree">B.S. Robotics</p>
+                <p class="education-note">SCS Dragon Award · First graduate of the B.S. Robotics program</p>
+              </article>
+            </div>
+          </div>
+          <div>
+            <div class="section-kicker">Technical toolkit</div>
+            <div class="skills-list" style="margin-top: 20px">
+              <div class="skill-row">
+                <div class="skill-label">Perception & vision</div>
+                <p class="skill-items">OpenCV, YOLOv8, RAFT stereo depth, RGB-D, 3D point clouds, pose estimation, TF2, PyTorch</p>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label">Robotics & autonomy</div>
+                <p class="skill-items">ROS 2, ROS 1, SLAM, Nav2, RViz, LiDAR, IMU, odometry, sensor integration, motion planning</p>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label">Programming</div>
+                <p class="skill-items">Python, C/C++, MATLAB, Java, Bash</p>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label">Platforms & tools</div>
+                <p class="skill-items">Linux, Git, Docker, NVIDIA Isaac Sim, Jupyter, NVIDIA Jetson, Teensy, Arduino, Moteus/CAN, Fusion 360</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="contact-orbit" aria-hidden="true"></div>
+        <div class="contact-inner shell">
+          <div>
+            <div class="section-kicker">04 — Contact</div>
+            <h2 class="contact-title" id="contact-title">Let’s make something move.</h2>
+          </div>
+          <a class="button" href="mailto:beverley.c.m.dacosta@gmail.com">Email Beverley <span aria-hidden="true">&nbsp;↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer shell">
+      <span>© <span id="year">2026</span> Beverley Da Costa · Built for the curious</span>
+      <div class="footer-links">
+        <a href="mailto:beverley.c.m.dacosta@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/beverley-da-costa/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const primaryNav = document.querySelector("#primary-nav");
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        primaryNav.classList.toggle("is-open", !isOpen);
+      });
+
+      primaryNav.addEventListener("click", (event) => {
+        if (event.target instanceof HTMLAnchorElement) {
+          menuToggle.setAttribute("aria-expanded", "false");
+          primaryNav.classList.remove("is-open");
+        }
+      });
+
+      document.querySelector("#year").textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
